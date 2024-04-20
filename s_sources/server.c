@@ -6,7 +6,7 @@
 /*   By: jedusser <jedusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 11:23:37 by jedusser          #+#    #+#             */
-/*   Updated: 2024/04/20 16:13:23 by jedusser         ###   ########.fr       */
+/*   Updated: 2024/04/20 16:23:43 by jedusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,9 @@ void handler(int signum, siginfo_t *info, void *oldact)
         bit_pos = 0;
         if(str[index] == '\0')
         {
-            ft_printf("%s\n ", str);
-            // for (int i = 0; i < 5; i++)
-            //     ft_printf("%d\n", str[i]);
+            ft_printf("%s\n", str);
+            for (int i = 0; i < 5; i++)
+                ft_printf("%d\n", str[i]);
             send_signal(SIGUSR2, info->si_pid);
             index = 0;
             buffer_size = BUFFER_SIZE;
