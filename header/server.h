@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   server.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jedusser <jedusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/08 11:13:50 by jedusser          #+#    #+#             */
-/*   Updated: 2024/04/20 16:07:09 by jedusser         ###   ########.fr       */
+/*   Created: 2024/04/20 14:27:17 by jedusser          #+#    #+#             */
+/*   Updated: 2024/04/20 15:16:29 by jedusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef SERVER_H
+# define SERVER_H
 
-size_t	ft_strlen(const char *str)
-{
-	int		i;
-	size_t	fullsize;
+#ifndef BUFFER_SIZE
+# define BUFFER_SIZE 3
+#endif
 
-	i = 0;
-	if (!str)
-		return (0);
-	while (str[i] != '\0')
-		i++;
-	fullsize = i;
-	return (fullsize);
-}
+#endif
+
+

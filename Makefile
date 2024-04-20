@@ -6,13 +6,13 @@
 #    By: jedusser <jedusser@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/13 11:12:19 by jedusser          #+#    #+#              #
-#    Updated: 2024/04/13 12:50:53 by jedusser         ###   ########.fr        #
+#    Updated: 2024/04/20 15:19:14 by jedusser         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 C_NAME = client
 S_NAME = server
-
+HDR_PATH = ./header/
 
 C_SRCS_DIR = ./c_sources/
 S_SRCS_DIR = ./s_sources/
@@ -26,7 +26,7 @@ LIBFT_PATH = ./libft/
 
 LIBFT = $(LIBFT_PATH)libft.a
 
-FLAGS = -g3 -Ilibft  #-Wall -Wextra -Werror
+FLAGS = -g3 -Ilibft -Iheader #-Wall -Wextra -Werror
 
 C_OBJS = $(C_SRCS:%.c=$(OBJS_PATH)/%.o)
 S_OBJS = $(S_SRCS:%.c=$(OBJS_PATH)/%.o)
@@ -35,7 +35,7 @@ default : all
 
 all : $(LIBFT) $(C_NAME) $(S_NAME)
 
-$(C_NAME) : $(C_OBJS) $(LIBFT)
+$(C_NAME) : $(C_OBJS) $(LIBFT) 
 	$(CC) $(FLAGS) $^ -o $@
 	
 $(S_NAME) : $(S_OBJS) $(LIBFT)
