@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   client.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jedusser <jedusser@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jean-micheldusserre <jean-micheldusserr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 11:12:44 by jedusser          #+#    #+#             */
-/*   Updated: 2024/04/20 14:18:26 by jedusser         ###   ########.fr       */
+/*   Updated: 2024/04/22 11:26:30 by jean-michel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void    handler(int signum, siginfo_t *info, void *oldact)
         ft_printf("Message sent\n");
         kill(getpid(), SIGKILL);  
     }
-    if ((str[index] >> bit_pos) & 0x01 == 1)
+    if ((str[index] >> bit_pos) & (0x01 == 1))
     {
         send_signal(SIGUSR2, info->si_pid);
     }
