@@ -6,7 +6,7 @@
 /*   By: jedusser <jedusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 14:27:17 by jedusser          #+#    #+#             */
-/*   Updated: 2024/04/24 14:23:24 by jedusser         ###   ########.fr       */
+/*   Updated: 2024/04/24 14:52:51 by jedusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void    send_signal(int signum, int pid);
 void    expand_buffer(char **str, size_t *buffer_size, int pid);
 int		init_server(struct sigaction *act);
 void    handler(int signum, siginfo_t *info, void *oldact);
-
+void    reinit_var(char **str, short *bit_pos, size_t *index, size_t *buffer_size);
 
 #ifndef BUFFER_SIZE
 # define BUFFER_SIZE 1
