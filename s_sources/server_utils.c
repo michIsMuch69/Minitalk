@@ -6,7 +6,7 @@
 /*   By: jedusser <jedusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 13:38:52 by jedusser          #+#    #+#             */
-/*   Updated: 2024/04/28 12:35:36 by jedusser         ###   ########.fr       */
+/*   Updated: 2024/04/28 13:22:53 by jedusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,16 @@ void	print_error(char *msg)
 void	fill_str(char *str, int signum, size_t index)
 {
 	if (signum == SIGUSR1)
-		str[index] = str[index] <<= 1;
+	{
+		str[index] = str[index];
+		str[index] <<= 1;
+	}
 	else if (signum == SIGUSR2)
 	{
-		str[index] = str[index] <<= 1;
-		str[index] = str[index] |= 1;
+		str[index] = str[index];
+		str[index] <<= 1;
+		str[index] = str[index];
+		str[index] |= 1;
 	}
 }
 
