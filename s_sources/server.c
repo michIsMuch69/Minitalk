@@ -6,7 +6,7 @@
 /*   By: jedusser <jedusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 11:23:37 by jedusser          #+#    #+#             */
-/*   Updated: 2024/04/28 10:05:23 by jedusser         ###   ########.fr       */
+/*   Updated: 2024/04/28 12:22:22 by jedusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,10 +87,13 @@ int	main(int argc, char **argv)
 	while (1)
 	{
 		pause();
-		while (pid_client != 0)
+		while (g_pid_client != 0)
 		{
-			if (kill(pid_client, 0) == -1)
-				kill(getpid(), SIGUSR1); //perror
+			if (kill(g_pid_client, 0) == -1)
+			{	
+				print_error("\nClient not repsonding\n");
+				kill(getpid(), SIGUSR1);
+			}
 		}
 	}
 	return (0);

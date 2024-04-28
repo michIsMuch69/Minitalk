@@ -6,11 +6,17 @@
 /*   By: jedusser <jedusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 13:38:52 by jedusser          #+#    #+#             */
-/*   Updated: 2024/04/28 10:00:28 by jedusser         ###   ########.fr       */
+/*   Updated: 2024/04/28 12:35:36 by jedusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "server.h"
+
+void	print_error(char *msg)
+{
+	if (write(2, msg, ft_strlen(msg)) == -1)
+		return ;
+}
 
 void	fill_str(char *str, int signum, size_t index)
 {
@@ -39,7 +45,6 @@ void	expand_buffer(char **str, size_t *buffer_size, int pid)
 		free(*str);
 		send_signal(SIGUSR2, pid);
 		return ;
-		//perror gestion
 	}
 	*str = tmp;
 	*buffer_size += BUFFER_SIZE;
@@ -52,6 +57,6 @@ int	init_server(struct sigaction *act)
 	act->sa_flags = SA_SIGINFO;
 	sigemptyset(&act->sa_mask);
 	if (sigaction(SIGUSR1, act, NULL) || sigaction(SIGUSR2, act, NULL))
-		return (1);
+		return (print_error("\nInit Error\n"), 1);
 	return (0);
 }
