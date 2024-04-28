@@ -6,7 +6,7 @@
 /*   By: jedusser <jedusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 11:23:37 by jedusser          #+#    #+#             */
-/*   Updated: 2024/04/28 12:22:22 by jedusser         ###   ########.fr       */
+/*   Updated: 2024/04/28 13:10:50 by jedusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,9 @@ void	init_str(char **str, int pid)
 	*str = ft_calloc((BUFFER_SIZE + 1), sizeof(char));
 	if (!*str)
 	{
+		print_error("Alloc error\n");
 		send_signal(SIGUSR2, pid);
-		exit(EXIT_FAILURE); // msg d'erreur
+		exit(EXIT_FAILURE);
 	}
 	send_signal(SIGUSR1, pid);
 }
@@ -35,13 +36,13 @@ void	printf_msg(char **str, int pid, size_t *index, size_t *buff_size)
 	return ;
 }
 
-void	reinit_var(char **str, short *bit_pos, size_t *index, size_t *buff_size)
+void	reinit_var(char **str, short *bit_pos, size_t *i, size_t *buff_size)
 {
 	free(*str);
 	*str = NULL;
 	if (bit_pos)
 		*bit_pos = 0;
-	*index = 0;
+	*i = 0;
 	*buff_size = BUFFER_SIZE;
 	g_pid_client = 0;
 }
@@ -62,7 +63,6 @@ void	handler(int signum, siginfo_t *info, void *oldact)
 		return ;
 	}
 	fill_str(str, signum, index);
-	// check char traite entierement
 	if (bit_pos++ == 7)
 	{
 		bit_pos = 0;
@@ -81,7 +81,7 @@ int	main(int argc, char **argv)
 	struct sigaction	act;
 
 	if (init_server(&act))
-		return (1); //perror        
+		return (1);
 	if (ft_printf("PID Serveur = %d\n", getpid()) == -1)
 		return (1);
 	while (1)
@@ -90,8 +90,8 @@ int	main(int argc, char **argv)
 		while (g_pid_client != 0)
 		{
 			if (kill(g_pid_client, 0) == -1)
-			{	
-				print_error("\nClient not repsonding\n");
+			{
+				print_error("\nClient not responding\n");
 				kill(getpid(), SIGUSR1);
 			}
 		}

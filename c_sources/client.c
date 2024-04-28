@@ -6,7 +6,7 @@
 /*   By: jedusser <jedusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 11:12:44 by jedusser          #+#    #+#             */
-/*   Updated: 2024/04/28 12:34:08 by jedusser         ###   ########.fr       */
+/*   Updated: 2024/04/28 13:02:22 by jedusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,6 @@ void	handler(int signum, siginfo_t *info, void *oldact)
 			index++;
 	}
 }
-
 
 int	main(int argc, char **argv)
 {
