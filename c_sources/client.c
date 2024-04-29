@@ -6,7 +6,7 @@
 /*   By: jedusser <jedusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 11:12:44 by jedusser          #+#    #+#             */
-/*   Updated: 2024/04/28 13:02:22 by jedusser         ###   ########.fr       */
+/*   Updated: 2024/04/29 10:58:30 by jedusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "libft.h"
 
 char	*g_str;
+//pourquoi globale ? et g_str = argv[2];
 void	handler(int signum, siginfo_t *info, void *oldact);
 
 void	print_error(char *msg)
@@ -59,7 +60,8 @@ void	handler(int signum, siginfo_t *info, void *oldact)
 	static short	bit_pos = 7;
 	static size_t	index;
 	static int		pid_server;
-
+	
+	(void) oldact;
 	if (!pid_server)
 		pid_server = info->si_pid;
 	else if (info->si_pid != pid_server)
@@ -82,7 +84,7 @@ int	main(int argc, char **argv)
 {
 	int					pid;
 	struct sigaction	act;
-
+	
 	if (init_client(&act))
 		return (1);
 	if (argc != 3)
@@ -92,6 +94,7 @@ int	main(int argc, char **argv)
 	if (pid <= 0)
 		return (print_error("Error\n"), 0);
 	send_signal(SIGUSR1, pid);
+	printf("pid client = %d\n", getpid());
 	while (1)
 	{
 		if (kill(pid, 0) == -1)

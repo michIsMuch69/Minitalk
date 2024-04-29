@@ -6,7 +6,7 @@
 /*   By: jedusser <jedusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 11:23:37 by jedusser          #+#    #+#             */
-/*   Updated: 2024/04/28 13:10:50 by jedusser         ###   ########.fr       */
+/*   Updated: 2024/04/29 10:53:58 by jedusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ void	handler(int signum, siginfo_t *info, void *oldact)
 	static size_t	index;
 	static size_t	buff_size = BUFFER_SIZE;
 
+	(void) oldact;
 	if (!str && info->si_pid > 0)
 		return (init_str(&str, info->si_pid));
 	if (g_pid_client != info->si_pid)
@@ -72,8 +73,7 @@ void	handler(int signum, siginfo_t *info, void *oldact)
 		if (index == buff_size)
 			expand_buffer(&str, &buff_size, info->si_pid);
 	}
-	send_signal(SIGUSR1, info->si_pid);
-	return ;
+	return (send_signal(SIGUSR1, info->si_pid));
 }
 
 int	main(int argc, char **argv)
