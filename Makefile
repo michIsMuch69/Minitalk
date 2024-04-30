@@ -6,7 +6,7 @@
 #    By: jedusser <jedusser@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/13 11:12:19 by jedusser          #+#    #+#              #
-#    Updated: 2024/04/28 13:06:57 by jedusser         ###   ########.fr        #
+#    Updated: 2024/04/30 14:02:12 by jedusser         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ S_SRCS_DIR = ./s_sources/
 
 OBJS_PATH = .obj
 
-C_SRCS = client.c 
+C_SRCS = client.c client_utils.c
 S_SRCS = server.c server_utils.c
 
 LIBFT_PATH = ./libft/
