@@ -6,7 +6,7 @@
 /*   By: jedusser <jedusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 11:12:44 by jedusser          #+#    #+#             */
-/*   Updated: 2024/05/01 10:35:36 by jedusser         ###   ########.fr       */
+/*   Updated: 2024/05/01 10:51:53 by jedusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int	main(int argc, char **argv)
 	if (init_client(&act))
 		return (1);
 	if (argc != 3)
-		return (print_error("Invalid arg\n"), 0);
+		return (print_error("Invalid arg(s)\n"), 0);
 	g_str = argv[2];
 	pid = atoi(argv[1]);
 	if (pid <= 0)
