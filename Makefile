@@ -6,7 +6,7 @@
 #    By: jedusser <jedusser@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/13 11:12:19 by jedusser          #+#    #+#              #
-#    Updated: 2024/04/30 14:02:12 by jedusser         ###   ########.fr        #
+#    Updated: 2024/05/01 09:18:23 by jedusser         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,10 +26,13 @@ LIBFT_PATH = ./libft/
 
 LIBFT = $(LIBFT_PATH)libft.a
 
-FLAGS = -g3 -Ilibft -Iheader #-Wall -Wextra -Werror
+FLAGS = -g3 -Ilibft -Iheader -Wall -Wextra -Werror
 
 C_OBJS = $(C_SRCS:%.c=$(OBJS_PATH)/%.o)
 S_OBJS = $(S_SRCS:%.c=$(OBJS_PATH)/%.o)
+
+C_HDRS = $(HDR_PATH)/client.h
+S_HDRS = $(HDR_PATH)/server.h
 
 default : all
 
@@ -41,14 +44,14 @@ $(C_NAME) : $(C_OBJS) $(LIBFT)
 $(S_NAME) : $(S_OBJS) $(LIBFT)
 	$(CC) $(FLAGS) $^ -o $@
 
-$(LIBFT) : 
+$(LIBFT) :
 	$(MAKE) -C libft/ all 	
 
-$(OBJS_PATH)/%.o : $(C_SRCS_DIR)/%.c
+$(OBJS_PATH)/%.o : $(C_SRCS_DIR)/%.c $(C_HDRS)
 	mkdir -p .obj
 	$(CC) $(FLAGS) -c $< -o $@
 
-$(OBJS_PATH)/%.o : $(S_SRCS_DIR)/%.c
+$(OBJS_PATH)/%.o : $(S_SRCS_DIR)/%.c $(S_HDRS)
 	mkdir -p .obj
 	$(CC) $(FLAGS) -c $< -o $@
 

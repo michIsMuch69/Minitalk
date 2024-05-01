@@ -6,7 +6,7 @@
 /*   By: jedusser <jedusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 11:23:37 by jedusser          #+#    #+#             */
-/*   Updated: 2024/04/29 10:53:58 by jedusser         ###   ########.fr       */
+/*   Updated: 2024/05/01 09:23:56 by jedusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	printf_msg(char **str, int pid, size_t *index, size_t *buff_size)
 	ft_printf("%s\n", *str);
 	send_signal(SIGUSR2, pid);
 	reinit_var(str, NULL, index, buff_size);
-	ft_printf("\nPID SERVER %d\n", getpid());
+	ft_printf("\nPID SERVER = %d\n", getpid());
 	return ;
 }
 
@@ -76,13 +76,13 @@ void	handler(int signum, siginfo_t *info, void *oldact)
 	return (send_signal(SIGUSR1, info->si_pid));
 }
 
-int	main(int argc, char **argv)
+int	main(void)
 {
 	struct sigaction	act;
 
 	if (init_server(&act))
 		return (1);
-	if (ft_printf("PID Serveur = %d\n", getpid()) == -1)
+	if (ft_printf("PID SERVER = %d\n", getpid()) == -1)
 		return (1);
 	while (1)
 	{

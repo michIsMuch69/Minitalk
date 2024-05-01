@@ -6,7 +6,7 @@
 /*   By: jedusser <jedusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 14:27:17 by jedusser          #+#    #+#             */
-/*   Updated: 2024/04/30 14:05:03 by jedusser         ###   ########.fr       */
+/*   Updated: 2024/04/30 14:15:29 by jedusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include "libft.h"
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1
+#  define BUFFER_SIZE 1000
 # endif
 
 void	fill_str(char *str, int signum, size_t index);
