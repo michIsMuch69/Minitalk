@@ -6,7 +6,7 @@
 /*   By: jedusser <jedusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 11:12:44 by jedusser          #+#    #+#             */
-/*   Updated: 2024/04/30 14:12:55 by jedusser         ###   ########.fr       */
+/*   Updated: 2024/05/01 10:35:36 by jedusser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,6 @@ int	main(int argc, char **argv)
 	if (pid <= 0)
 		return (print_error("Error\n"), 0);
 	send_signal(SIGUSR1, pid);
-	//ft_printf("pid client = %d\n", getpid());
 	while (1)
 	{
 		if (kill(pid, 0) == -1)
